@@ -1,5 +1,6 @@
 package com.geekbrains.lesson5;
 
+import com.geekbrains.hw6.GiftMainPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -33,13 +34,19 @@ public class GiftShopTest {
         driver.manage().window().maximize();
     }
     @Test
-    void giftCookieTest() throws InterruptedException {
-        Cookie cookie = new Cookie("PHPSESSID", "18ec14c55db3073db138499c33c1c209");
-        driver.manage().addCookie(cookie);
-        driver.navigate().refresh();
-        //WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(8));
-        Thread.sleep(10000);
+    void chancePuchLogButton() throws InterruptedException {
+        new GiftMainPage(driver)
+                .clickLogButton()
+                .fillLog("QAQ")
+                .fillPas("Test60test")
+                .clickLogButton();
     }
+    //void giftCookieTest() throws InterruptedException {
+        //Cookie cookie = new Cookie("PHPSESSID", "18ec14c55db3073db138499c33c1c209");
+        //driver.manage().addCookie(cookie);
+        //driver.navigate().refresh();
+        //WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(8));
+        //Thread.sleep(10000);}
 
     //Очень трудно что-либо делать не понимая где, как и какой метод можно использовать
     //Хотел проверить возможность удаления элемента с помощью теста, но не знаю какой метод assertion использовать
@@ -48,12 +55,11 @@ public class GiftShopTest {
         //driver.findElement(By.xpath("//span[@class='delete']")).click();
     //}
 
-    @Test
-    void giftBannerTest(){
-        driver.findElement(By.xpath("//a[@title='ООО «Время подарков» - интернет магазин эксклюзивных сувениров и подарков.']")).click();
-        Assertions.assertTrue(driver.findElement(By.xpath("//a[@title='ООО «Время подарков» - интернет магазин эксклюзивных сувениров и подарков.']")).isDisplayed());
-        new WebDriverWait(driver, Duration.ofSeconds(8));
-    }
+    //@Test
+    //void giftBannerTest(){
+        //driver.findElement(By.xpath("//a[@title='ООО «Время подарков» - интернет магазин эксклюзивных сувениров и подарков.']")).click();
+        //Assertions.assertTrue(driver.findElement(By.xpath("//a[@title='ООО «Время подарков» - интернет магазин эксклюзивных сувениров и подарков.']")).isDisplayed());
+        //new WebDriverWait(driver, Duration.ofSeconds(8));}
 
 
 
